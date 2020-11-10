@@ -1,0 +1,11 @@
+FROM centos-python
+
+RUN dnf install python38
+RUN pip3 install selenium
+RUN dnf install wget -y
+WORKDIR "/root"
+RUN wget https://chromedriver.storage.googleapis.com/86.0.4240.22/chromedriver_linux64.zip
+RUN dnf install unzip -y
+RUN unzip chromedriver_linux64.zip
+RUN wget https://dl.google.com/linux/direct/google-chrome-stable_current_x86_64.rpm
+RUN dnf localinstall google-chrome-stable_current_x86_64.rpm -y
